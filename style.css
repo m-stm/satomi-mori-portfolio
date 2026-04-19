@@ -194,6 +194,129 @@ header {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* --- モーダル全体の背景（オーバーレイ） --- */
+.modal-overlay {
+  display: none; /* 初期状態は非表示 */
+  position: fixed;
+  z-index: 2000; /* ヘッダーなどより手前に表示 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 背景を暗くする */
+  backdrop-filter: blur(8px); /* 背景の青空をぼかす（森さんのスタイル） */
+  animation: fadeIn 0.3s ease;
+}
+
+/* --- モーダルのコンテンツボックス --- */
+.modal-content {
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  margin: 5vh auto;
+  padding: 60px 20px 30px 20px;;
+  width: 90%;
+  max-width: 900px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  color: #333333;
+}
+
+/* --- 閉じるボタン --- */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  color: #333333;
+  cursor: pointer;
+  transition: color 0.3s;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: rgb(10, 105, 248);
+}
+
+/* --- スライドショーコンテナ（モーダル内） --- */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* スライドの比率を固定（4:3なら4/3に） */
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 2px solid #eeeeee;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-picture {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.slide-picture[src] {
+  opacity: 1;
+}
+
+/* --- 前後ボタン（ナビゲーション） --- */
+.slide-prev, .slide-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #333333;;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 15px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.slide-prev { left: 10px; }
+.slide-next { right: 10px; }
+
+.slide-prev:hover, .slide-next:hover {
+  background-color: rgba(135, 206, 250, 0.6);
+  border-color: #fff;
+}
+
+/* --- ページカウンターと説明 --- */
+.slide-counter {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.modal-description {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.modal-description h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* フッター */
 footer {
     position: fixed;
