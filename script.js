@@ -106,4 +106,50 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // --- モーダル制御ロジック ---
+  const modal = document.getElementById("work-modal");
+  const modalImg = document.getElementById("current-slide");
+  const modalDesc = document.getElementById("modal-description");
+
+  function openModal(index) {
+    const data = worksData[index];
+    activeWorkSlides = data.slides;
+    currentSlideIdx = 0;
+
+    modalDesc.innerHTML = `<h3>${data.title}</h3>`;
+    updateSlide();
+
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
+  }
+
+  function updateSlide() {
+    modalImg.src = activeWorkSlides[currentSlideIdx];
+    document.getElementById("slide-num").textContent = currentSlideIdx + 1;
+    document.getElementById("slide-total").textContent =
+      activeWorkSlides.length;
+  }
+
+  // モーダル内のボタンイベント（ページを次へ、ページを戻る）
+  document.getElementById("next-btn").onclick = () => {
+    currentSlideIdx = (currentSlideIdx + 1) % activeWorkSlides.length;
+    updateSlide();
+  };
+  document.getElementById("prev-btn").onclick = () => {
+    currentSlideIdx =
+      (currentSlideIdx - 1 + activeWorkSlides.length) % activeWorkSlides.length;
+    updateSlide();
+  };
+
+  // 閉じる処理
+  const closeBtn = document.querySelector(".close-btn");
+  const closeModal = () => {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+  };
+  if (closeBtn) closeBtn.onclick = closeModal;
+  window.onclick = (e) => {
+    if (e.target == modal) closeModal();
+  };
 });
