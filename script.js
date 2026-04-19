@@ -51,22 +51,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const worksGrid = document.getElementById("works-grid");
   const loadMoreBtn = document.getElementById("load-more-btn");
-  const worksGrid = document.querySelector(".works-grid");
+  let currentSlideIdx = 0;
+  let activeWorkSlides = [];
 
+  // --- カードの動的生成 ---
+  if (worksGrid) {
+    worksData.forEach((work, index) => {
+      const card = document.createElement("div");
+      card.className = "work-card";
+      // 3枚目以降（index 2より後ろ）は初期状態で隠す
+      if (index > 2) card.classList.add("hidden");
+
+      // カードデザインHTML
+      card.innerHTML = `
+        <img src="${work.image}" alt="${work.title}" class="work-photo" />
+        <div class="work-info">
+          <h3 class="work-title">${work.title}</h3>
+          <div class="work-tags">
+            ${work.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+          </div>
+        </div>
+      `;
+
+      // カードクリックでモーダルを開く
+      card.addEventListener("click", () => openModal(index));
+      worksGrid.appendChild(card);
+    });
+  }
+
+  // --- View More / Close ロジック ---
   if (loadMoreBtn && worksGrid) {
     loadMoreBtn.addEventListener("click", () => {
       const hiddenCards = worksGrid.querySelectorAll(".work-card.hidden");
       const isHidden = hiddenCards.length > 0;
 
       if (isHidden) {
-        // 【開く動作】
+        // 開く動作
         hiddenCards.forEach((card) => {
           card.classList.remove("hidden");
           card.classList.add("shown-temporarily");
         });
         loadMoreBtn.textContent = "Close";
       } else {
-        // 【閉じる動作】
+        // 閉じる動作
         const shownCards = worksGrid.querySelectorAll(
           ".work-card.shown-temporarily",
         );
