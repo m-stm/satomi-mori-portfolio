@@ -1,3 +1,34 @@
+const trigger = document.getElementById("menu-trigger");
+const sidebar = document.getElementById("nav-sidebar");
+const overlay = document.getElementById("menu-overlay");
+const icon = document.getElementById("menu-icon");
+
+// 画像パス（実際のファイル名に合わせてください）
+const menuIcon = "images/menu.png";
+
+function toggleMenu() {
+  sidebar.classList.toggle("active");
+  overlay.classList.toggle("active");
+
+  if (sidebar.classList.contains("active")) {
+    icon.src = menuIcon;
+  } else {
+    icon.src = menuIcon;
+  }
+}
+
+// ボタンクリック時
+trigger.addEventListener("click", toggleMenu);
+
+// 背景クリック時（メニューを閉じる）
+overlay.addEventListener("click", toggleMenu);
+
+// リンククリック時（メニューを閉じる）
+const links = document.querySelectorAll(".nav-sidebar a");
+links.forEach((link) => {
+  link.addEventListener("click", toggleMenu);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   // --- データ定義（列挙型） ---
   const worksData = [
