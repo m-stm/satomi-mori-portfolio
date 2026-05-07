@@ -4,21 +4,22 @@ h1,
 h2,
 p,
 section,
-main,
 header,
 footer {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", "Arial", sans-serif;
 }
+
 main {
   margin-top: 80px; /* これで最初のProfileがヘッダーの下から始まります */
 }
+
 .content-box {
   scroll-margin-top: 80px;
 }
 
-/* スムーズに動かす（お好みで） */
+/* スムーススクロール */
 html {
   scroll-behavior: smooth;
 }
@@ -315,11 +316,13 @@ header {
 .modal-content {
   position: relative;
   background-color: #f2f2f2;
-  margin: 5vh auto;
-  padding: 60px 20px 30px 20px;
-  width: 90%;
-  max-width: 900px;
-  border-radius: 20px;
+  margin: 20px auto;
+  padding: 50px 15px 20px 15px;
+  width: 95%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   color: #333333;
@@ -346,10 +349,8 @@ header {
 .slideshow-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9; /* スライドの比率を固定（4:3なら4/3に） */
   background-color: #f2f2f2;
-  border: 2px solid #f2f2f2;
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -358,10 +359,22 @@ header {
 
 .slide-picture {
   max-width: 100%;
-  max-height: 100%;
+  height: auto;
+  max-height: 60vh;
   object-fit: contain;
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
+}
+@media (max-width: 600px) {
+  .modal-content {
+    padding-top: 40px;
+    margin: 10px auto;
+  }
+
+  .slide-prev,
+  .slide-next {
+    padding: 10px 5px;
+  }
 }
 
 .slide-picture[src] {
