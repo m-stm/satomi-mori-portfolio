@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/slides/eventReportPortal/event5.PNG",
         "images/slides/eventReportPortal/event6.PNG",
         "images/slides/eventReportPortal/event7.PNG",
+        "images/slides/eventReportPortal/event8.PNG",
       ],
     },
     {
