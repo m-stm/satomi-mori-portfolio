@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const worksData = [
     {
       title: "イベント報告書閲覧サイト",
-      image: "images/sample_eventReportPortal.png",
+      image: "images/slides/eventReportPortal/event1.PNG",
       tags: ["Laravel", "React", "Mysql"],
       slides: [
         "images/slides/eventReportPortal/event1.PNG",
@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       title: "学習レポート共有サイト",
-      image: "images/sample_studyReportPortal.png",
-      tags: ["Laravel", "React", "Mysql"],
+      image: "images/slides/studyReportPortal/study1.PNG",
+      tags: ["Laravel", "React", "Mysql", "GAS"],
       slides: [
         "images/slides/studyReportPortal/study1.PNG",
         "images/slides/studyReportPortal/study2.PNG",
@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/slides/studyReportPortal/study5.PNG",
         "images/slides/studyReportPortal/study6.PNG",
         "images/slides/studyReportPortal/study7.PNG",
+        "images/slides/studyReportPortal/study8.PNG",
       ],
     },
     {
