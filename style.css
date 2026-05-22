@@ -108,7 +108,7 @@ header {
 }
 
 .nav-sidebar.active {
-  transform: translateX(280px); /* 右へスライドして表示 */
+  transform: translateX(260px); /* 右へスライドして表示 */
 }
 
 .nav-sidebar ul {
