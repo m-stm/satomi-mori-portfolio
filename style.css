@@ -27,7 +27,7 @@ html {
 .site-container {
   background-size: cover;
   background-position: center;
-  background-color: #f2f2f2;
+  background-color: #f4f8fa;
   background-attachment: fixed; /* 背景固定 */
   min-height: 100vh;
   display: flex;
@@ -70,7 +70,7 @@ header {
 /* 中央エリア：タイトルの白文字設定 */
 .main-title {
   font-size: 20px;
-  color: #ffffff; /* 白文字 */
+  color: #ffffff;
   font-weight: normal;
   white-space: nowrap; /* 改行しない */
 }
@@ -210,7 +210,7 @@ header {
 .work-card {
   background-color: #f1f1f4;
   backdrop-filter: blur(5px);
-  border: 3px solid #00a3bf;
+  border: 1px solid #00a3bf;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
