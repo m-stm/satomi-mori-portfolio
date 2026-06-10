@@ -63,10 +63,17 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
     },
     {
-      title: "予定表自動更新ツール",
-      image: "images/work2.jpg",
-      tags: ["Excel", "VBA"],
-      slides: ["images/slides/vba1-1.png", "images/slides/vba1-2.png"],
+      title: "オフィス紹介サイト",
+      image: "images/slides/officeIntroduction/office1.PNG",
+      tags: ["WordPress", "PHP"],
+      slides: [
+        "images/slides/officeIntroduction/office1.PNG",
+        "images/slides/officeIntroduction/office2.PNG",
+        "images/slides/officeIntroduction/office3.PNG",
+        "images/slides/officeIntroduction/office4.PNG",
+        "images/slides/officeIntroduction/office5.PNG",
+        "images/slides/officeIntroduction/office6.PNG",
+      ],
     },
     {
       title: "ファイル統合ツール",
