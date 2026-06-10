@@ -76,9 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
     },
     {
-      title: "ファイル統合ツール",
+      title: "服薬管理アプリ",
       image: "images/work3.jpg",
-      tags: ["Excel", "VBA"],
+      tags: ["AppSheet"],
       slides: ["images/slides/vba2-1.png"],
     },
     {
