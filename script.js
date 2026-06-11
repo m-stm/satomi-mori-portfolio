@@ -82,10 +82,17 @@ document.addEventListener("DOMContentLoaded", () => {
       slides: ["images/slides/vba2-1.png"],
     },
     {
-      title: "議事録テンプレート作成ツール",
-      image: "images/work4.jpg",
+      title: "議事録テンプレート自動作成ツール",
+      image: "images/slides/meetingMinutesTool/meeting1.PNG",
       tags: ["Bat"],
-      slides: ["images/slides/bat1.png"],
+      slides: [
+        "images/slides/meetingMinutesTool/meeting1.PNG",
+        "images/slides/meetingMinutesTool/meeting2.PNG",
+        "images/slides/meetingMinutesTool/meeting3.PNG",
+        "images/slides/meetingMinutesTool/meeting4.PNG",
+        "images/slides/meetingMinutesTool/meeting5.PNG",
+        "images/slides/meetingMinutesTool/meeting6.PNG",
+      ],
     },
   ];
 
