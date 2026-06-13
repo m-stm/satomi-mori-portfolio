@@ -354,14 +354,21 @@ header {
   background-color: #f2f2f2;
   margin: 20px auto;
   padding: 50px 15px 20px 15px;
+
   width: 95%;
-  max-width: 800px;
-  max-height: 90vh;
+  max-width: 1200px;
+
+  height: calc(90vh - 80px);
+  max-height: 900px;
+
   overflow-y: auto;
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   color: #333333;
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* --- 閉じるボタン --- */
@@ -394,13 +401,15 @@ header {
 }
 
 .slide-picture {
+  width: auto;
   max-width: 100%;
   height: auto;
-  max-height: 60vh;
+  max-height: 65vh;
   object-fit: contain;
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
 }
+
 @media (max-width: 600px) {
   .modal-content {
     padding-top: 40px;
