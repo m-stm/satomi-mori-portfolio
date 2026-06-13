@@ -237,31 +237,28 @@ header {
 /* --- グリッドレイアウト (3列) --- */
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
   margin-bottom: 30px;
   width: 100%;
 }
 
 /* --- カード自体のデザイン --- */
 .work-card {
-  background-color: #f1f1f4;
+  background-color: #ffffff;
   backdrop-filter: blur(5px);
-  border: 1px solid #00a3bf;
-  border-radius: 10px;
+  border: 1px solid rgba(0, 163, 191, 0.25);
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 
-  /* カード内の要素を縦に並べる */
   width: 100%;
   display: flex;
   flex-direction: column;
   height: 100%;
 
-  transition:
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-  margin: 0 auto; /* 中央寄せ */
+  transition: all 0.3s ease;
+  margin: 0 auto;
 }
 
 .work-card:hover {
@@ -274,8 +271,10 @@ header {
 /* --- カード内の各要素 --- */
 .work-photo {
   width: 100%;
-  height: 140px;
-  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background-color: #e2e8f0;
+  display: block;
 }
 
 .work-info {
