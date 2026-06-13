@@ -209,6 +209,16 @@ header {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
+.profile-list {
+  list-style-type: none;
+  padding-left: 20px;
+  margin-top: 8px;
+}
+
+.profile-list li {
+  margin-bottom: 8px;
+}
+
 .skills-grid {
   display: flex;
   gap: 40px;
