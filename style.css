@@ -128,7 +128,7 @@ header {
   width: 280px;
   height: 100vh;
   background-color: #006f83;
-  padding-top: 100px; /* ヘッダーの下からリストが見えるように */
+  padding-top: 100px;
   transition: transform 0.4s ease;
   z-index: 999;
   box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
@@ -139,7 +139,7 @@ header {
 }
 
 .nav-sidebar ul {
-  list-style: none; /* ・を消す */
+  list-style: none;
   padding: 0 30px;
 }
 
