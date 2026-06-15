@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       title: "オフィス紹介サイト",
       image: "images/slides/officeIntroduction/office1.PNG",
-      tags: ["WordPress", "PHP"],
+      tags: ["WordPress", "PHP", "HTML", "CSS"],
       slides: [
         "images/slides/officeIntroduction/office1.PNG",
         "images/slides/officeIntroduction/office2.PNG",
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       title: "議事録テンプレート自動作成ツール",
       image: "images/slides/meetingMinutesTool/meeting1.PNG",
-      tags: ["Bat"],
+      tags: ["Bat", "コマンド"],
       slides: [
         "images/slides/meetingMinutesTool/meeting1.PNG",
         "images/slides/meetingMinutesTool/meeting2.PNG",
