@@ -51,7 +51,7 @@
 
 ## ドキュメント
 
-- [業務要件定義書]()
+- [業務要件定義書](docs/eventReportPortal/Business-Requirements-Document.md)
 - 技術支援（チーム開発用資料）
-  - [環境構築手引き]()
-  - [GitHub運用ガイド]()
+  - [環境構築手引き](docs/eventReportPortal/setup-guide.md)
+  - [GitHub運用ガイド](docs/eventReportPortal/github-guide.md)
