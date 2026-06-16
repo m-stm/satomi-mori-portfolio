@@ -54,4 +54,4 @@
 - [業務要件定義書](./Business-Requirements-Document.md)
 - 技術支援（チーム開発用資料）
   - [環境構築手引き](./setup-guide.md)
-  - [GitHub運用ガイド](.github-guide.md)
+  - [GitHub運用ガイド](./github-guide.md)
