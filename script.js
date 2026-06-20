@@ -77,9 +77,17 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       title: "服薬管理アプリ",
-      image: "images/work3.jpg",
+      image: "images/slides/drugTakingManagementApp/drug1.PNG",
       tags: ["AppSheet"],
-      slides: ["images/slides/vba2-1.png"],
+      slides: [
+        "images/slides/drugTakingManagementApp/drug1.PNG",
+        "images/slides/drugTakingManagementApp/drug2.PNG",
+        "images/slides/drugTakingManagementApp/drug3.PNG",
+        "images/slides/drugTakingManagementApp/drug4.PNG",
+        "images/slides/drugTakingManagementApp/drug5.PNG",
+        "images/slides/drugTakingManagementApp/drug6.PNG",
+        "images/slides/drugTakingManagementApp/drug7.PNG",
+      ],
     },
     {
       title: "議事録テンプレート自動作成ツール",
