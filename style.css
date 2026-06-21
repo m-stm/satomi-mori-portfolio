@@ -209,6 +209,55 @@ header {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
+/* 自己紹介エリア全体を横並び */
+.profile-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* 左側：イラストの設定 */
+.profile-image {
+  flex-shrink: 0;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-image img {
+  width: 100%;
+  height: auto;
+  /* border-radius: 50%; 💡 画像を綺麗に丸型にくり抜く設定（四角のままでよければ削除してください） */
+  border: 3px solid #ccc;
+}
+
+/* 右側：テキストの設定 */
+.profile-text-content {
+  flex-grow: 1;
+}
+
+.profile-name {
+  margin-top: 12px;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+/* 📱 レスポンシブ対応 */
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column; /* 縦並びに変更 */
+    align-items: center; /* 中央揃えにする */
+    gap: 20px;
+  }
+
+  .profile-text-content {
+    width: 100%;
+  }
+}
+
 .profile-list {
   list-style-type: none;
   padding-left: 20px;
