@@ -102,6 +102,20 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/slides/meetingMinutesTool/meeting6.PNG",
       ],
     },
+    {
+      title: "ファイル統合ツールOrderlyMerge",
+      image: "images/slides/OrderlyMerge/merge1.PNG",
+      tags: ["Excel", "VBA"],
+      slides: [
+        "images/slides/OrderlyMerge/merge1.PNG",
+        "images/slides/OrderlyMerge/merge2.PNG",
+        "images/slides/OrderlyMerge/merge3.PNG",
+        "images/slides/OrderlyMerge/merge4.PNG",
+        "images/slides/OrderlyMerge/merge5.PNG",
+        "images/slides/OrderlyMerge/merge6.PNG",
+        "images/slides/OrderlyMerge/merge7.PNG",
+      ],
+    },
   ];
 
   const worksGrid = document.getElementById("works-grid");
