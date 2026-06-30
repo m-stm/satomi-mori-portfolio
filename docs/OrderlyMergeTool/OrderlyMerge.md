@@ -218,8 +218,40 @@ End Sub
 <details>
   <summary><span style="font-size: 1.17em; font-weight: bold;">④統合ファイルの格納先を指定</span></summary>
   <br>
+```
 
+' 統合ファイルの格納先を指定
+Sub SelectOutputFolderToD5()
+Dim mainSheet As Worksheet
+Dim defaultPath As String
+Dim fileDialogObject As FileDialog
+
+    Set mainSheet = ThisWorkbook.Sheets("Main")
+
+    ' 現在D5セルにパスがあればそれを初期位置に、なければD2（読み込み元）を参考にする
+    defaultPath = mainSheet.Range("D5").Value
+    If defaultPath = "" Then defaultPath = mainSheet.Range("D2").Value
+    If defaultPath = "" Then defaultPath = CreateObject("WScript.Shell").SpecialFolders("Desktop")
+
+    Set fileDialogObject = Application.FileDialog(msoFileDialogFolderPicker)
+
+    With fileDialogObject
+        .Title = "統合ファイルの格納先（保存先）フォルダを選択してください"
+        .InitialFileName = defaultPath
+
+        If .Show = -1 Then
+            mainSheet.Range("D5").Value = .SelectedItems(1) & "\"
+            MsgBox "格納先フォルダを設定しました！", vbInformation, "設定完了"
+        Else
+            MsgBox "キャンセルされました。", vbExclamation, "中断"
+        End If
+    End With
+
+End Sub
+
+```
 </details>
+
 <details>
   <summary><span style="font-size: 1.17em; font-weight: bold;">⑤統合ファイルのファイル名を指定</span></summary>
   <br>
