@@ -286,5 +286,124 @@ End Sub
 <details>
   <summary><span style="font-size: 1.17em; font-weight: bold;">⑥ファイルをList通りに統合する</span></summary>
   <br>
+```
 
+Sub MergeSheetsFromList_Final()
+Dim mainSheet As Worksheet
+Dim listSheet As Worksheet
+Dim inputFolder As String
+Dim outputFolder As String
+Dim newFileName As String
+Dim newWorkbook As Workbook
+Dim srcWorkbook As Workbook
+Dim srcSheet As Worksheet
+Dim lastRow As Long
+Dim i As Long
+Dim currentFile As String
+Dim currentSheet As String
+Dim newSheetName As String
+Dim copiedSheet As Worksheet
+Dim savePath As String
+
+    Set mainSheet = ThisWorkbook.Sheets("Main")
+    Set listSheet = ThisWorkbook.Sheets("List")
+
+    ' 画面（Mainシート）から各設定を吸い上げる
+    inputFolder = mainSheet.Range("D2").Value
+    outputFolder = mainSheet.Range("D5").Value
+    newFileName = mainSheet.Range("D6").Value
+
+    ' 入力チェック
+    If inputFolder = "" Then
+        MsgBox "読み込み元フォルダ（D2セル）が指定されていません。", vbCritical, "エラー"
+        Exit Sub
+    End If
+    If outputFolder = "" Then
+        MsgBox "格納先フォルダ（D5セル）が指定されていません。", vbCritical, "エラー"
+        Exit Sub
+    End If
+    If newFileName = "" Then
+        MsgBox "統合ファイル名（D6セル）が指定されていません。", vbCritical, "エラー"
+        Exit Sub
+    End If
+
+    ' Listシートのデータチェック
+    lastRow = listSheet.Cells(listSheet.Rows.Count, "A").End(xlUp).Row
+    If lastRow < 2 Then
+        MsgBox "Listシートにデータがありません。先にSTEP 1を実行してください。", vbCritical, "エラー"
+        Exit Sub
+    End If
+
+    ' 実行の最終確認
+    Dim confirm As VbMsgBoxResult
+    confirm = MsgBox("設定された格納先に、Listの順番通りにファイルを統合します。" & vbCrLf & _
+                     "ファイル名: " & newFileName & ".xlsx" & vbCrLf & vbCrLf & _
+                     "よろしいですか？", vbYesNo + vbQuestion, "実行確認")
+    If confirm = vbNo Then Exit Sub
+
+    ' --- 統合処理スタート ---
+    Application.ScreenUpdating = False
+    Application.DisplayAlerts = False
+
+    ' 新しい空のワークブックを作成
+    Set newWorkbook = Workbooks.Add
+
+    ' Listシートの上から順番に処理
+    For i = 2 To lastRow
+        currentFile = listSheet.Cells(i, 1).Value
+        currentSheet = listSheet.Cells(i, 2).Value
+        newSheetName = listSheet.Cells(i, 3).Value
+
+        If currentFile <> "" And currentSheet <> "" Then
+            On Error Resume Next
+            ' 読み込みは「inputFolder」から
+            Set srcWorkbook = Workbooks.Open(fileName:=inputFolder & currentFile, ReadOnly:=True)
+            On Error GoTo 0
+
+            If Not srcWorkbook Is Nothing Then
+                On Error Resume Next
+                Set srcSheet = srcWorkbook.Worksheets(currentSheet)
+                On Error GoTo 0
+
+                If Not srcSheet Is Nothing Then
+                    srcSheet.Copy After:=newWorkbook.Sheets(newWorkbook.Sheets.Count)
+                    Set copiedSheet = newWorkbook.Sheets(newWorkbook.Sheets.Count)
+
+                    If newSheetName <> "" Then
+                        copiedSheet.Name = Left(newSheetName, 31)
+                    End If
+                End If
+                srcWorkbook.Close SaveChanges:=False
+                Set srcWorkbook = Nothing
+                Set srcSheet = Nothing
+            End If
+        End If
+    Next i
+
+    ' 初期シート（Sheet1など）の削除
+    Dim ws As Worksheet
+    On Error Resume Next
+    For Each ws In newWorkbook.Worksheets
+        If newWorkbook.Worksheets.Count > 1 And (ws.Name = "Sheet1" Or ws.Name = "シート1") Then
+            ws.Delete
+        End If
+    Next ws
+    On Error GoTo 0
+
+    ' 保存は「outputFolder」へ
+    savePath = outputFolder & newFileName & ".xlsx"
+
+    newWorkbook.SaveAs fileName:=savePath, FileFormat:=xlOpenXMLWorkbook
+    newWorkbook.Close SaveChanges:=False
+
+    Application.ScreenUpdating = True
+    Application.DisplayAlerts = True
+
+    MsgBox "ファイルの統合が完了しました！" & vbCrLf & vbCrLf & _
+           "格納先：" & savePath, vbInformation, "完了"
+
+End Sub
+
+```
 </details>
+```
