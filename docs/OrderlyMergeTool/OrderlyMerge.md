@@ -210,10 +210,11 @@ End Sub
 </details>
 
 <details>
-  <summary><span style="font-size: 1.17em; font-weight: bold;">③対象ファイルを読み込む</span></summary>
+  <summary><span style="font-size: 1.17em; font-weight: bold;">③Listシート並び替えとリネーム</span></summary>
   <br>
 手動作業
 </details>
+
 <details>
   <summary><span style="font-size: 1.17em; font-weight: bold;">④統合ファイルの格納先を指定</span></summary>
   <br>
