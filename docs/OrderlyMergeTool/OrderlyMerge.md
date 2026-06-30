@@ -255,8 +255,34 @@ End Sub
 <details>
   <summary><span style="font-size: 1.17em; font-weight: bold;">⑤統合ファイルのファイル名を指定</span></summary>
   <br>
+```
 
+Sub InputNewFileNameToD4()
+Dim mainSheet As Worksheet
+Dim inputName As String
+Dim defaultName As String
+
+    Set mainSheet = ThisWorkbook.Sheets("Main")
+
+    ' 本日の日付（yyyymmdd）を組み合わせたデフォルト値を作る
+    defaultName = "統合ファイル_" & Format(Date, "yyyymmdd")
+
+    ' インプットボックスを表示（デフォルト値をセットしておく）
+    inputName = InputBox("作成する統合ファイルのファイル名を入力してください。" & vbCrLf & _
+                         "（※拡張子 .xlsx は不要です）", "ファイル名の指定", defaultName)
+
+    ' ユーザーが「OK」を押して空欄でなければD4セルに書き込む
+    If inputName <> "" Then
+        mainSheet.Range("D6").Value = inputName
+    Else
+        MsgBox "入力がキャンセルされたか、空欄です。", vbExclamation, "中断"
+    End If
+
+End Sub
+
+```
 </details>
+
 <details>
   <summary><span style="font-size: 1.17em; font-weight: bold;">⑥ファイルをList通りに統合する</span></summary>
   <br>
