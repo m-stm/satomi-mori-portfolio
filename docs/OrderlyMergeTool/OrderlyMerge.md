@@ -42,7 +42,7 @@
   <br>
 
 ```
-' フォルダ選択
+' 統合対象フォルダ選択
 Sub SelectFolderToD2()
     Dim mainSheet As Worksheet
     Dim defaultPath As String
