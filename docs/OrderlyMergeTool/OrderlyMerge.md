@@ -83,11 +83,132 @@ End Sub
 ```
 
 </details>
+
 <details>
   <summary><span style="font-size: 1.17em; font-weight: bold;">②対象ファイルを読み込む</span></summary>
   <br>
+```
+' 対象ファイル読み込み
+Sub FetchSheetsSortedByName()
+    Dim mainSheet As Worksheet
+    Dim listSheet As Worksheet
+    Dim targetFolder As String
+    Dim fileName As String
+    Dim srcWorkbook As Workbook
+    Dim srcSheet As Worksheet
+    Dim nextRow As Long
+    Dim lastRow As Long
 
+    ' 各シートの定義
+    Set mainSheet = ThisWorkbook.Sheets("Main")
+    Set listSheet = ThisWorkbook.Sheets("List")
+
+    ' MainシートのD2セルからフォルダパスを取得
+    targetFolder = mainSheet.Range("D2").Value
+
+    ' パスが空欄の場合のエラーチェック
+    If targetFolder = "" Then
+        MsgBox "MainシートのD2セルにフォルダパスを入力、または選択してください。", vbCritical, "エラー"
+        Exit Sub
+    End If
+
+    ' 末尾の「\」の補正
+    If Right(targetFolder, 1) <> "\" Then
+        targetFolder = targetFolder & "\"
+        mainSheet.Range("D2").Value = targetFolder
+    End If
+
+    ' 実行前の最終確認
+    Dim confirm As VbMsgBoxResult
+    confirm = MsgBox("Listシートを初期化し、新しくシート名一覧を取得します。よろしいですか？", vbYesNo + vbQuestion, "実行確認")
+    If confirm = vbNo Then Exit Sub
+
+    ' --- 処理スタート ---
+    Application.ScreenUpdating = False
+    Application.DisplayAlerts = False
+
+    ' ==========================================================
+    ' Listシートの1行目以外（2行目~）最終行目まで）を完全に初期化
+    ' ==========================================================
+    lastRow = listSheet.Cells(listSheet.Rows.Count, "A").End(xlUp).Row
+    If lastRow >= 2 Then
+        listSheet.Rows("2:" & lastRow).Clear
+    End If
+    ' ==========================================================
+
+    ' --- VBA標準の配列を使ってファイル名を取り込む ---
+    Dim fileList() As String
+    Dim fileCount As Long
+    fileCount = 0
+
+    fileName = Dir(targetFolder & "*.xls*")
+    Do While fileName <> ""
+        ' 自分自身のマクロブックは除外
+        If fileName <> ThisWorkbook.Name Then
+            fileCount = fileCount + 1
+            ReDim Preserve fileList(1 To fileCount)
+            fileList(fileCount) = fileName
+        End If
+        fileName = Dir()
+    Loop
+
+    ' ファイルが1つも見つからなかった場合は終了
+    If fileCount = 0 Then
+        Application.ScreenUpdating = True
+        Application.DisplayAlerts = True
+        MsgBox "対象フォルダ内にExcelファイルが見つかりませんでした。", vbExclamation, "終了"
+        Exit Sub
+    End If
+
+    ' --- 配列の中身をファイル名順（昇順）に並び替え ---
+    Dim i As Long, j As Long
+    Dim temp As String
+    For i = 1 To fileCount - 1
+        For j = i + 1 To fileCount
+            If StrComp(fileList(i), fileList(j), vbTextCompare) > 0 Then
+                temp = fileList(i)
+                fileList(i) = fileList(j)
+                fileList(j) = temp
+            End If
+        Next j
+    Next i
+
+    ' --- 並び替えた配列の順番通りにファイルを処理 ---
+    nextRow = 2
+    For i = 1 To fileCount
+        fileName = fileList(i)
+
+        On Error Resume Next
+        Set srcWorkbook = Workbooks.Open(fileName:=targetFolder & fileName, ReadOnly:=True)
+        On Error GoTo 0
+
+        If Not srcWorkbook Is Nothing Then
+            ' 開いたファイルの全シートをループしてListシートへ書き出し
+            For Each srcSheet In srcWorkbook.Worksheets
+                listSheet.Cells(nextRow, 1).Value = fileName          ' A列：ファイル名
+                listSheet.Cells(nextRow, 2).Value = srcSheet.Name     ' B列：現在のシート名
+                listSheet.Cells(nextRow, 3).Value = srcSheet.Name     ' C列：変更後のシート名（初期値）
+
+                nextRow = nextRow + 1
+            Next srcSheet
+
+            srcWorkbook.Close SaveChanges:=False
+            Set srcWorkbook = Nothing
+            Set srcSheet = Nothing
+        End If
+    Next i
+
+    ' 停止していた機能を再開
+    Application.ScreenUpdating = True
+    Application.DisplayAlerts = True
+
+    MsgBox "「List」シートの2行目以降を初期化し、ファイル名順に最新の一覧を取得しました！", vbInformation, "完了"
+
+End Sub
+
+```
 </details>
+
 <details>
   <summary><span style="font-size: 1.17em; font-weight: bold;">③対象ファイルを読み込む</span></summary>
   <br>
