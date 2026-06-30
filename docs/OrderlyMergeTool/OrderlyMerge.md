@@ -36,3 +36,75 @@
 ## ツール活用効果
 
 ## ソースコード解説
+
+<details>
+  <summary><span style="font-size: 1.17em; font-weight: bold;">①統合対象ファイルの格納先を選択</span></summary>
+  <br>
+
+```
+' フォルダ選択
+Sub SelectFolderToD2()
+    Dim mainSheet As Worksheet
+    Dim defaultPath As String
+    Dim fileDialogObject As FileDialog
+    Dim selectedFolder As String
+
+    ' 操作画面である「Main」シートを指定
+    Set mainSheet = ThisWorkbook.Sheets("Main")
+
+    ' 現在D2セルにパスが入っていればそれを初期位置にする
+    ' 空っぽの場合は、ユーザーの「デスクトップ」を初期位置にする
+    defaultPath = mainSheet.Range("D2").Value
+    If defaultPath = "" Then
+        defaultPath = CreateObject("WScript.Shell").SpecialFolders("Desktop")
+    End If
+
+    ' エクスプローラーからのフォルダ選択画面を設定
+    Set fileDialogObject = Application.FileDialog(msoFileDialogFolderPicker)
+
+    With fileDialogObject
+        .Title = "読み込み対象のフォルダを選択してください"
+        .InitialFileName = defaultPath ' 初期表示するディレクトリ
+
+        ' ユーザーがフォルダを選んで「OK」を押した場合
+        If .Show = -1 Then
+            ' 選択されたパスの末尾に「\」をつけて変数に格納
+            selectedFolder = .SelectedItems(1) & "\"
+
+            ' MainシートのD2セルに出力
+            mainSheet.Range("D2").Value = selectedFolder
+    ' ユーザーが「OK」を押して空欄でなければD6セルに書き込む
+    If inputName <> "" Then
+        mainSheet.Range("D6").Value = inputName
+    Else
+        MsgBox "入力がキャンセルされたか、空欄です。", vbExclamation, "中断"
+    End If
+End Sub
+```
+
+</details>
+<details>
+  <summary><span style="font-size: 1.17em; font-weight: bold;">②対象ファイルを読み込む</span></summary>
+  <br>
+
+</details>
+<details>
+  <summary><span style="font-size: 1.17em; font-weight: bold;">③対象ファイルを読み込む</span></summary>
+  <br>
+手動作業
+</details>
+<details>
+  <summary><span style="font-size: 1.17em; font-weight: bold;">④統合ファイルの格納先を指定</span></summary>
+  <br>
+
+</details>
+<details>
+  <summary><span style="font-size: 1.17em; font-weight: bold;">⑤統合ファイルのファイル名を指定</span></summary>
+  <br>
+
+</details>
+<details>
+  <summary><span style="font-size: 1.17em; font-weight: bold;">⑥ファイルをList通りに統合する</span></summary>
+  <br>
+
+</details>
