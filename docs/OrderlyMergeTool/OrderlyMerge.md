@@ -87,17 +87,18 @@ End Sub
 <details>
   <summary><span style="font-size: 1.17em; font-weight: bold;">②対象ファイルを読み込む</span></summary>
   <br>
+
 ```
 ' 対象ファイル読み込み
 Sub FetchSheetsSortedByName()
-    Dim mainSheet As Worksheet
-    Dim listSheet As Worksheet
-    Dim targetFolder As String
-    Dim fileName As String
-    Dim srcWorkbook As Workbook
-    Dim srcSheet As Worksheet
-    Dim nextRow As Long
-    Dim lastRow As Long
+Dim mainSheet As Worksheet
+Dim listSheet As Worksheet
+Dim targetFolder As String
+Dim fileName As String
+Dim srcWorkbook As Workbook
+Dim srcSheet As Worksheet
+Dim nextRow As Long
+Dim lastRow As Long
 
     ' 各シートの定義
     Set mainSheet = ThisWorkbook.Sheets("Main")
@@ -205,8 +206,8 @@ Sub FetchSheetsSortedByName()
     MsgBox "「List」シートの2行目以降を初期化し、ファイル名順に最新の一覧を取得しました！", vbInformation, "完了"
 
 End Sub
-
 ```
+
 </details>
 
 <details>
@@ -218,8 +219,8 @@ End Sub
 <details>
   <summary><span style="font-size: 1.17em; font-weight: bold;">④統合ファイルの格納先を指定</span></summary>
   <br>
-```
 
+```
 ' 統合ファイルの格納先を指定
 Sub SelectOutputFolderToD5()
 Dim mainSheet As Worksheet
@@ -248,15 +249,15 @@ Dim fileDialogObject As FileDialog
     End With
 
 End Sub
-
 ```
+
 </details>
 
 <details>
   <summary><span style="font-size: 1.17em; font-weight: bold;">⑤統合ファイルのファイル名を指定</span></summary>
   <br>
-```
 
+```
 Sub InputNewFileNameToD4()
 Dim mainSheet As Worksheet
 Dim inputName As String
@@ -279,15 +280,15 @@ Dim defaultName As String
     End If
 
 End Sub
-
 ```
+
 </details>
 
 <details>
   <summary><span style="font-size: 1.17em; font-weight: bold;">⑥ファイルをList通りに統合する</span></summary>
   <br>
-```
 
+```
 Sub MergeSheetsFromList_Final()
 Dim mainSheet As Worksheet
 Dim listSheet As Worksheet
@@ -403,7 +404,6 @@ Dim savePath As String
            "格納先：" & savePath, vbInformation, "完了"
 
 End Sub
+```
 
-```
 </details>
-```
