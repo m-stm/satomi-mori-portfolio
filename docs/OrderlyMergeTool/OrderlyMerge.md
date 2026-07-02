@@ -97,14 +97,14 @@ End Sub
 ```
 ' 対象ファイル読み込み
 Sub FetchSheetsSortedByName()
-Dim mainSheet As Worksheet
-Dim listSheet As Worksheet
-Dim targetFolder As String
-Dim fileName As String
-Dim srcWorkbook As Workbook
-Dim srcSheet As Worksheet
-Dim nextRow As Long
-Dim lastRow As Long
+    Dim mainSheet As Worksheet
+    Dim listSheet As Worksheet
+    Dim targetFolder As String
+    Dim fileName As String
+    Dim srcWorkbook As Workbook
+    Dim srcSheet As Worksheet
+    Dim nextRow As Long
+    Dim lastRow As Long
 
     ' 各シートの定義
     Set mainSheet = ThisWorkbook.Sheets("Main")
@@ -229,9 +229,9 @@ End Sub
 ```
 ' 統合ファイルの格納先を指定
 Sub SelectOutputFolderToD5()
-Dim mainSheet As Worksheet
-Dim defaultPath As String
-Dim fileDialogObject As FileDialog
+    Dim mainSheet As Worksheet
+    Dim defaultPath As String
+    Dim fileDialogObject As FileDialog
 
     Set mainSheet = ThisWorkbook.Sheets("Main")
 
@@ -265,9 +265,9 @@ End Sub
 
 ```
 Sub InputNewFileNameToD4()
-Dim mainSheet As Worksheet
-Dim inputName As String
-Dim defaultName As String
+    Dim mainSheet As Worksheet
+    Dim inputName As String
+    Dim defaultName As String
 
     Set mainSheet = ThisWorkbook.Sheets("Main")
 
@@ -296,21 +296,21 @@ End Sub
 
 ```
 Sub MergeSheetsFromList_Final()
-Dim mainSheet As Worksheet
-Dim listSheet As Worksheet
-Dim inputFolder As String
-Dim outputFolder As String
-Dim newFileName As String
-Dim newWorkbook As Workbook
-Dim srcWorkbook As Workbook
-Dim srcSheet As Worksheet
-Dim lastRow As Long
-Dim i As Long
-Dim currentFile As String
-Dim currentSheet As String
-Dim newSheetName As String
-Dim copiedSheet As Worksheet
-Dim savePath As String
+    Dim mainSheet As Worksheet
+    Dim listSheet As Worksheet
+    Dim inputFolder As String
+    Dim outputFolder As String
+    Dim newFileName As String
+    Dim newWorkbook As Workbook
+    Dim srcWorkbook As Workbook
+    Dim srcSheet As Worksheet
+    Dim lastRow As Long
+    Dim i As Long
+    Dim currentFile As String
+    Dim currentSheet As String
+    Dim newSheetName As String
+    Dim copiedSheet As Worksheet
+    Dim savePath As String
 
     Set mainSheet = ThisWorkbook.Sheets("Main")
     Set listSheet = ThisWorkbook.Sheets("List")
