@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
     },
     {
-      title: "ファイル統合ツールOrderlyMerge",
+      title: "ファイル統合ツール『OrderlyMerge』",
       image: "images/slides/OrderlyMerge/merge1.PNG",
       tags: ["Excel", "VBA"],
       slides: [
