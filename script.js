@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
     },
     {
-      title: "服薬管理アプリ",
+      title: "服薬管理アプリ『MediTap』",
       image: "images/slides/drugTakingManagementApp/drug1.PNG",
       tags: ["AppSheet"],
       slides: [
