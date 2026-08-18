@@ -221,4 +221,128 @@ document.addEventListener("DOMContentLoaded", () => {
   window.onclick = (e) => {
     if (e.target == modal) closeModal();
   };
+  // ========================================================
+  // 【Webチラシ】プレビュー拡大モーダル表示
+  // ========================================================
+  const designGallery = document.getElementById("design-gallery");
+  const designModalContainer = document.getElementById(
+    "design-modal-container",
+  );
+  const flyerMoreBtn = document.getElementById("flyer-more-btn");
+
+  if (designGallery && designModalContainer) {
+    let galleryHtml = "";
+    let modalHtml = "";
+
+    designWorksData.forEach((work, index) => {
+      const isHiddenClass = index >= 2 ? "is-hidden" : "";
+
+      // webチラシカード
+      galleryHtml += `
+      <div class="flyer-card ${isHiddenClass}">
+        <div class="flyer-card-media">
+          <div class="flyer-thumb-box">
+            <img src="${work.thumbImage}" alt="${work.title}" class="flyer-thumb">
+          </div>
+          <button type="button" class="btn-card-zoom" onclick="openFlyerModal('${work.id}')">
+            🔍 拡大表示
+          </button>
+        </div>
+
+        <div class="flyer-card-content">
+          <h4 class="flyer-title">${work.title}</h4>
+          <dl class="flyer-info-list">
+            <div class="info-item">
+              <dt>🎯 ターゲット</dt>
+              <dd>${work.target}</dd>
+            </div>
+            <div class="info-item">
+              <dt>🎨 デザインの工夫</dt>
+              <dd>${work.color}</dd>
+            </div>
+            <div class="info-item">
+              <dt>📐 構成の意図</dt>
+              <dd>${work.layout}</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    `;
+
+      // 拡大表示されるモーダル
+      modalHtml += `
+      <div id="flyer-modal-${work.id}" class="flyer-modal-overlay" onclick="closeFlyerModalOnBg(event, '${work.id}')">
+        <div class="flyer-modal-container">
+          <button type="button" class="flyer-modal-close" onclick="closeFlyerModal('${work.id}')" aria-label="閉じる">&times;</button>
+          <div class="flyer-modal-scroll-area">
+            <img src="${work.fullImage}" alt="${work.title}：拡大" class="flyer-modal-img">
+          </div>
+        </div>
+      </div>
+    `;
+    });
+
+    designGallery.innerHTML = galleryHtml;
+    designModalContainer.innerHTML = modalHtml;
+
+    if (designWorksData.length <= 2 && flyerMoreBtn) {
+      flyerMoreBtn.style.display = "none";
+    }
+
+    // View More 開閉処理
+    if (flyerMoreBtn) {
+      flyerMoreBtn.addEventListener("click", () => {
+        const isExpanded = flyerMoreBtn.classList.contains("is-expanded");
+
+        if (!isExpanded) {
+          const hiddenCards = designGallery.querySelectorAll(
+            ".flyer-card.is-hidden",
+          );
+          hiddenCards.forEach((card) => {
+            card.classList.remove("is-hidden");
+            card.classList.add("is-visible");
+          });
+          flyerMoreBtn.classList.add("is-expanded");
+          flyerMoreBtn.textContent = "Close";
+        } else {
+          const allCards = designGallery.querySelectorAll(".flyer-card");
+          allCards.forEach((card, index) => {
+            if (index >= 2) {
+              card.classList.add("is-hidden");
+              card.classList.remove("is-visible");
+            }
+          });
+          flyerMoreBtn.classList.remove("is-expanded");
+          flyerMoreBtn.textContent = "View More";
+
+          designGallery.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    }
+  }
+
+  // ------------------------------------------------------
+  // モーダル開閉制御
+  // ------------------------------------------------------
+  window.openFlyerModal = function (id) {
+    const modal = document.getElementById(`flyer-modal-${id}`);
+    if (modal) {
+      modal.classList.add("is-active");
+      document.body.style.overflow = "hidden"; // 背面のスクロール固定
+    }
+  };
+
+  window.closeFlyerModal = function (id) {
+    const modal = document.getElementById(`flyer-modal-${id}`);
+    if (modal) {
+      modal.classList.remove("is-active");
+      document.body.style.overflow = ""; // スクロール固定解除
+    }
+  };
+
+  window.closeFlyerModalOnBg = function (event, id) {
+    if (event.target.classList.contains("flyer-modal-overlay")) {
+      closeFlyerModal(id);
+    }
+  };
 });
