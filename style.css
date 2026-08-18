@@ -2,6 +2,7 @@
 body,
 h1,
 h2,
+h3,
 p,
 section,
 header,
@@ -195,6 +196,13 @@ header {
   margin-bottom: 8px;
 }
 
+.content-box h3 {
+  font-size: 18px;
+  color: #006f83;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
 /* コンテンツボックスの中身 */
 .inner-text {
   background-color: #e9f7f9;
@@ -205,7 +213,6 @@ header {
   -webkit-backdrop-filter: blur(12px);
   border: 2px solid #2bc8e4;
   text-shadow: none;
-  border: 1px solid #e0e0e0; /* 境界線は目立たせすぎない */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
@@ -229,7 +236,6 @@ header {
 .profile-image img {
   width: 100%;
   height: auto;
-  /* border-radius: 50%; 💡 画像を綺麗に丸型にくり抜く設定（四角のままでよければ削除してください） */
   border: 3px solid #ccc;
 }
 
