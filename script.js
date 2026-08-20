@@ -117,6 +117,22 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
     },
   ];
+  // ========================================================
+  // 【Webデザイン】データ定義
+  // ========================================================
+  const designWorksData = [
+    {
+      id: 1,
+      title: "学習レポート共有サイト：サイトオープンのご案内",
+      thumbImage: "./images/posters/システム紹介.jpg",
+      fullImage: "./images/posters/システム紹介.jpg",
+      target: "就労移行支援事業所の利用者さん",
+      color:
+        "学習がテーマのサイトの為、知的印象持つ「グリーン」をベースカラーに採用。<br/>利用メリットはポジティブな気持ちを促す「落ち着いたピンク」をベースカラーに採用。具体的な利用場面は穏やかさをもつ「優しいブルー」をベースカラーに採用しました。<br/>全体的に統一感を残すために色のトーンが同程度になるように調整しました。",
+      layout:
+        "使用ハードルを下げるため、3ステップの利用方法を中央上にイラストと配置。<br/>その後具体的な試用場面に想像を促すような導線でメリットと掲載内容案をコンテンツとして配置しました。",
+    },
+  ];
 
   const worksGrid = document.getElementById("works-grid");
   const loadMoreBtn = document.getElementById("load-more-btn");
