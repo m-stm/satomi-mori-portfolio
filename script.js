@@ -127,8 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
       thumbImage: "images/webFlyer/studyReportPortal-new-release.jpg",
       fullImage: "images/webFlyer/studyReportPortal-new-release.jpg",
       target: "就労移行支援事業所の利用者さん",
-      color:
-        "学習がテーマのサイトの為、知的印象の「グリーン」をベースカラーに採用。<br/>利用メリットはポジティブな気持ちを促す「落ちついたピンク」をベースカラーに採用。具体的な利用場面は穏やかな「優しいブルー」をベースカラーに採用しました。<br/>全体的に統一感を残すために色のトーンが同程度になるように調整しました。",
+      point:
+        "配色を工夫し、学習がテーマのサイトの為、知的印象の「グリーン」をベースカラーに採用。<br/>利用メリットはポジティブな気持ちを促す「落ちついたピンク」をベースカラーに採用。具体的な利用場面は穏やかな「優しいブルー」をベースカラーに採用しました。<br/>全体的に統一感を残すために色のトーンが同程度になるように調整しました。",
       layout:
         "使用ハードルを下げるため、3ステップの利用方法を中央上にイラストと配置。<br/>その後具体的な試用場面に想像を促すような導線でメリットと掲載内容案をコンテンツとして配置しました。",
     },
@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="info-item">
               <dt>🎨 デザインの工夫</dt>
-              <dd>${work.color}</dd>
+              <dd>${work.pointo}</dd>
             </div>
             <div class="info-item">
               <dt>📐 構成の意図</dt>
