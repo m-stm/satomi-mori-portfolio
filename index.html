@@ -117,25 +117,51 @@
           </div>
         </section>
 
+        <!-- 実績セクション -->
         <section id="works" class="content-box">
           <h2>&lt;Works&gt;</h2>
-          <p>
-            より詳細なドキュメントや画面説明は<a
-              href="https://github.com/m-stm/satomi-mori-portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              >GitHub</a
-            >にて公開中
-          </p>
-          <div class="inner-text">
-            <div id="works-grid" class="works-grid"></div>
 
-            <div class="btn-container">
-              <button id="load-more-btn" class="more-button">View More</button>
+          <div class="works-sub-section">
+            <h3>【Webシステム、ツール】</h3>
+            <p>
+              より詳細なドキュメントや画面説明は
+              <a
+                href="https://github.com/m-stm/satomi-mori-portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >にて公開中
+            </p>
+            <div class="inner-text">
+              <div id="works-grid" class="works-grid"></div>
+
+              <div class="btn-container">
+                <button id="load-more-btn" class="more-button">
+                  View More
+                </button>
+              </div>
             </div>
           </div>
+
+          <div class="works-sub-section">
+            <h3>【Webチラシ・デザインギャラリー】</h3>
+            <div class="inner-text">
+              <!-- カード群が動的に挿入されるエリア -->
+              <div id="design-gallery" class="flyer-gallery"></div>
+
+              <div class="btn-container">
+                <button type="button" id="flyer-more-btn" class="more-button">
+                  View More
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- チラシ用拡大モーダル動的挿入場所 -->
+          <div id="design-modal-container"></div>
         </section>
 
+        <!-- Webシステム用モーダル -->
         <div id="work-modal" class="modal-overlay">
           <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -159,8 +185,9 @@
     </div>
 
     <footer>
-      <a>&copy; 2026 Satomi Mori</a>
+      <small>&copy; 2026 Satomi Mori</small>
     </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
