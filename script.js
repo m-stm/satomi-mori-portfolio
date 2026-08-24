@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="info-item">
               <dt>🎨 デザインの工夫</dt>
-              <dd>${work.pointo}</dd>
+              <dd>${work.point}</dd>
             </div>
             <div class="info-item">
               <dt>📐 構成の意図</dt>
